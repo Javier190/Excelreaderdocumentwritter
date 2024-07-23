@@ -18,7 +18,6 @@ public class ExcelReader {
             Sheet sheet = workbook.getSheetAt(0);
             boolean header = true;
             for (Row row : sheet) {
-                // Omitir la fila de encabezado
                 if (header) {
                     header = false;
                     continue;
@@ -45,7 +44,7 @@ public class ExcelReader {
                 if (DateUtil.isCellDateFormatted(cell)) {
                     return cell.getDateCellValue().toString();
                 } else {
-                    return String.valueOf((int) cell.getNumericCellValue()); // Convertir a entero
+                    return String.valueOf((int) cell.getNumericCellValue());
                 }
             case BOOLEAN:
                 return String.valueOf(cell.getBooleanCellValue());

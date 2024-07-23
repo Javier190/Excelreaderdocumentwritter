@@ -33,7 +33,6 @@ public class WordCreator {
         List<Object> texts = documentPart.getJAXBNodesViaXPath("//w:t", true);
         StringBuilder combinedText = new StringBuilder();
 
-        // Combinar todo el texto de los nodos
         for (Object obj : texts) {
             Text text;
             if (obj instanceof JAXBElement) {
@@ -51,13 +50,11 @@ public class WordCreator {
             combinedText.append(text.getValue());
         }
 
-        // Reemplazar los marcadores en el texto combinado
         String textValue = combinedText.toString();
         for (Map.Entry<String, String> entry : mappings.entrySet()) {
             textValue = textValue.replace(entry.getKey(), entry.getValue());
         }
 
-        // Dividir el texto combinado en los nodos originales
         int startIndex = 0;
         for (Object obj : texts) {
             Text text;
